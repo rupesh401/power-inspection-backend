@@ -30,9 +30,10 @@ const supervisorEmailMap = {
 
 app.post("/api/send", async (req, res) => {
   try {
-    const { supervisorName, shift, checklist = {}, comments } = req.body;
+    const { btNumber, supervisorName, shift, checklist = {}, comments } = req.body;
 
     const checklistData = [
+      {Field: "BT Number", Value: btNumber},
       { Field: "Supervisor Name", Value: supervisorName },
       { Field: "Shift", Value: shift },
       ...Object.entries(checklist).map(([key, value]) => ({
